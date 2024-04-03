@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    background: #C38D9E;
+    text-align: center;
+}
+
+.home .popularTitle{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    padding: 50px;
+}
