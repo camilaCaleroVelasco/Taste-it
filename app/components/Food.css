@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+ }
+ 
+.container {
+  display: inline-block;
+  vertical-align: top;
+  justify-content: center;
+
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 15px;
+  width: 350px;
+  height: 370px;
+  margin: 20px;
+  background: #553c2c;
+}
+
+.food-item {
+  list-style: none;
+}
+
+
+.card:hover {
+  box-shadow: 10px 3px 15px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
+  
+  
+
+.food-img {
+  width: 200px;
+  height: 200px;
+  margin-right: 1rem;
+  margin-top: 2rem;
+  border-radius: 25%;
+}
+
+.food-info h2{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: beige;    
+    padding: 10px;
+
+}
+
+.food-info h4 {
+  font-family:'Courier New', Courier, monospace;
+  font-size: 1em;
+  margin: .5rem 2rem;
+  color: beige;    
+  padding: 3px;
+}
