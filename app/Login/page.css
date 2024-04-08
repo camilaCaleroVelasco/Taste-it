@@ -7,8 +7,7 @@ body {
     border-radius: 15px;
     background-color: rgb(173, 212, 186);
     box-sizing: border-box;
-    display: flex;
-    /*flex-direction: column;*/
+    display: grid;
     align-content: center;
     text-align: center;
     width: 450px;
