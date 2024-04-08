@@ -6,6 +6,7 @@ import Hdr from '../components/Hdr'
 import './page.css'
 import '../Login/page'
 import UserFoodList from './UserFoodList'
+import womanProfile from './woman-profile.jpeg';
 
 const ProfilePage = () => {
 
@@ -44,12 +45,13 @@ const ProfilePage = () => {
     const[userfoods, setFoods] = useState(USER_RECIPES);
   
     return (
-      <div className="home"> 
+      <div className="profile"> 
            <Hdr />
            <h1 className="yourTitle">Your Recipes</h1>
-           
-        
         <UserFoodList items={userfoods}/>
+            <div className="profilepic">
+                <img className="womanpic" src={womanProfile} alt="WomanProfile"/>;
+            </div>
       </div>
     );
   }
