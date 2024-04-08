@@ -1,0 +1,24 @@
+.button {
+    font: inherit;
+    border: 1px solid black;
+    background: honeydew;
+    color: #41B3A3;
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+    margin: 20px;
+  }
+  
+  .button:hover,
+  .button:active {
+    background: #41B3A3;
+    color: honeydew;
+    border-color: black;
+    box-shadow: 10px 3px 15px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in;
+    cursor: pointer;
+  }
+  
+  .button:focus {
+    outline: none;
+  }
+  
