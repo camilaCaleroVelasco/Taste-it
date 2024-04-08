@@ -18,6 +18,9 @@ const Hdr = () => {
                 <Link href="/Login">Login</Link>
             </li>
             <li>
+                <Link href='/Create'>Create</Link>
+            </li>
+            <li>
                 <Link href="/About">About</Link>
             </li>
             
