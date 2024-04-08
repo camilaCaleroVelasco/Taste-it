@@ -6,7 +6,6 @@ import Hdr from '../components/Hdr'
 import './page.css'
 import '../Login/page'
 import UserFoodList from './UserFoodList'
-import womanProfile from './woman-profile.jpeg';
 
 const ProfilePage = () => {
 
@@ -58,8 +57,10 @@ const ProfilePage = () => {
            <h1 className="yourTitle">Your Recipes</h1>
            <UserFoodList items={userfoods}/>
            <div className="profilepic">
-              <img className="womanpic" src={womanProfile} alt="WomanProfile"/>;
+              <img className="womanpic" src="./images/woman-profile.jpeg"/>
            </div>
+           <h3 className="username2"> Jane Doe</h3>
+           <h4 className="years"> Since 2019 </h4>
       </div>
     );
   }
