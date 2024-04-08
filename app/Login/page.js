@@ -12,7 +12,7 @@ const LoginPage = () => {
 
     const submitHandler = (event) => {
         event.preventDefault()
-        router.push('../Profile/page') //change once we make the 'logged in user screen'
+        router.push('/Profile') //change once we make the 'logged in user screen'
     }
 
     return (
