@@ -4,6 +4,8 @@ import {useRouter} from 'next/navigation'
 import Link from 'next/link'
 import Hdr from '../components/Hdr'
 import './page.css'
+import '../Login/page'
+
 
 const ProfilePage = () => {
 
@@ -43,7 +45,7 @@ const ProfilePage = () => {
     const[foods, setFoods] = useState(USER_RECIPES);
   
     return (
-      <div className="profile"> 
+      <div className="home"> 
            <Hdr />
            <h1 className="yourTitle">Your Recipes</h1>
            
