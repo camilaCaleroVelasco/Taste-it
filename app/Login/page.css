@@ -1,5 +1,24 @@
-.form {
-    background-color: honeydew;
+body {
+    margin: 0;
+    background: url(../BackgroundImg/back.jpeg);
+    text-align: center;
+}
+
+form {
     padding: 50px;
     text-align: center;
+}
+
+label {
+    padding: 8px;
+    font-size: 20px;
+}
+
+input {
+    padding: 1px;
+}
+
+button {
+    padding: 4px;
+    margin: 6px;
 }
