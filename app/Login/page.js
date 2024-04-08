@@ -8,26 +8,38 @@ import './page.css'
 
 const LoginPage = () => {
 
-    const router = useRouter()
+    const router = useRouter();
+    const[isLoggedIn, setIsLoggedIn] = useState(false);
 
     const submitHandler = (event) => {
-        event.preventDefault()
+        event.preventDefault();
+        // For now the user can login without credentials
+        setIsLoggedIn(true);
         router.push('/Profile') //change once we make the 'logged in user screen'
+    }
+
+    const handleLogout = () => {
+        setIsLoggedIn(false); // user gets logout
+        router.push('/'); // go to home view
     }
 
     return (
         <div>
-            <Hdr />
-            <div class="login-card">
-                <form onSubmit={submitHandler}>
-                    <label>Username: </label>
-                    <input type="text"/>
-                    <br></br>
-                    <label>Password: </label>
-                    <input type="text"/>
-                    <br></br>
-                    <button type="submit">Log In</button>
-                </form>
+            <Hdr isLoggedIn={isLoggedIn} handleLgout={handleLogout}/>
+            <div className="login-card">
+                <div className='LoginHeader'>
+                    <h1 className='login'>Login</h1>
+                </div>
+                
+                    <form onSubmit={submitHandler} className='form'>
+                        <label className='username'>Username: </label>
+                        <input type="text" className='text-username'/>
+                        <br></br>
+                        <label className='password'>Password: </label>
+                        <input type="text" className='text-password'/>
+                        <br></br>
+                        <button type="submit" className='submit'>Log In</button>
+                    </form>
             </div>
         </div>
     )

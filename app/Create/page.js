@@ -1,12 +1,20 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
+import {useRouter} from 'next/navigation'
 import Hdr from '../components/Hdr';
 import Button from '../components/Button';
 import './page.css';
 
 const CreatePage = () => {
 
+  const router = useRouter();
+  const[isLoggedIn, setIsLoggedIn] = useState(true);
+
+    const handleLogout = () => {
+      setIsLoggedIn(false); // user gets logout
+      router.push('/'); // go to home view
+    }
     const [recipeInput, setRecipeInput] = useState({
         enteredTitle: '',
         enteredDescription: '',
@@ -95,7 +103,7 @@ const CreatePage = () => {
 
     return (
         <div class='home'>            
-            <Hdr />
+           <Hdr isLoggedIn={isLoggedIn} handleLgout={handleLogout}/>
 
             <form onSubmit={submitHandler}>
                 <div class='column'>

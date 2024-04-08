@@ -10,6 +10,14 @@ import womanProfile from './woman-profile.jpeg';
 
 const ProfilePage = () => {
 
+    const router = useRouter();
+    const[isLoggedIn, setIsLoggedIn] = useState(true);
+
+    const handleLogout = () => {
+      setIsLoggedIn(false); // user gets logout
+      router.push('/'); // go to home view
+    }
+    
 
     const USER_RECIPES = [
       {
@@ -46,12 +54,12 @@ const ProfilePage = () => {
   
     return (
       <div className="profile"> 
-           <Hdr />
+           <Hdr isLoggedIn={isLoggedIn} handleLgout={handleLogout}/>
            <h1 className="yourTitle">Your Recipes</h1>
-        <UserFoodList items={userfoods}/>
-            <div className="profilepic">
-                <img className="womanpic" src={womanProfile} alt="WomanProfile"/>;
-            </div>
+           <UserFoodList items={userfoods}/>
+           <div className="profilepic">
+              <img className="womanpic" src={womanProfile} alt="WomanProfile"/>;
+           </div>
       </div>
     );
   }
