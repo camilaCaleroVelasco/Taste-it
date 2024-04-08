@@ -3,10 +3,9 @@ import React, {useState} from 'react'
 import {useRouter} from 'next/navigation'
 import Link from 'next/link'
 import Hdr from '../components/Hdr'
-import '../page.css'
+import './page.css'
 import '../Login/page'
-import FoodList from '../components/FoodList'
-
+import UserFoodList from './UserFoodList'
 
 const ProfilePage = () => {
 
@@ -42,7 +41,7 @@ const ProfilePage = () => {
       },
     ];
   
-    const[foods, setFoods] = useState(USER_RECIPES);
+    const[userfoods, setFoods] = useState(USER_RECIPES);
   
     return (
       <div className="home"> 
@@ -50,7 +49,7 @@ const ProfilePage = () => {
            <h1 className="yourTitle">Your Recipes</h1>
            
         
-        <FoodList items={foods}/>
+        <UserFoodList items={userfoods}/>
       </div>
     );
   }
