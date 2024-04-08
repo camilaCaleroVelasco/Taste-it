@@ -3,12 +3,12 @@ import React, {useState} from 'react'
 import {useRouter} from 'next/navigation'
 import Link from 'next/link'
 import Hdr from '../components/Hdr'
-import './page.css'
+import '../page.css'
 import '../Login/page'
+import FoodList from '../components/FoodList'
 
 
 const ProfilePage = () => {
-
 
 
     const USER_RECIPES = [
