@@ -18,15 +18,17 @@ const LoginPage = () => {
     return (
         <div>
             <Hdr />
-            <form onSubmit={submitHandler}>
-                <label>Username: </label>
-                <input type="text"/>
-                <br></br>
-                <label>Password: </label>
-                <input type="text"/>
-                <br></br>
-                <button type="submit">Log In</button>
-            </form>
+            <div class="login-card">
+                <form onSubmit={submitHandler}>
+                    <label>Username: </label>
+                    <input type="text"/>
+                    <br></br>
+                    <label>Password: </label>
+                    <input type="text"/>
+                    <br></br>
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
         </div>
     )
 }
