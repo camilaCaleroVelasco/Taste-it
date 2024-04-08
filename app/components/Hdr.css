@@ -4,7 +4,7 @@
     background-color: honeydew;
     display: flex;
     flex-direction: row;
-    border-bottom: 30px solid #41B3A3;
+    border-bottom: 30px solid darkolivegreen;
 }
 
 .hdr .leftSide img {

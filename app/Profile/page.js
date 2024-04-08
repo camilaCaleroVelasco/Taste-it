@@ -7,6 +7,7 @@ import './page.css'
 import '../Login/page'
 import UserFoodList from './UserFoodList'
 
+
 const ProfilePage = () => {
 
     const router = useRouter();
@@ -54,13 +55,17 @@ const ProfilePage = () => {
     return (
       <div className="profile"> 
            <Hdr isLoggedIn={isLoggedIn} handleLgout={handleLogout}/>
-           <h1 className="yourTitle">Your Recipes</h1>
-           <UserFoodList items={userfoods}/>
-           <div className="profilepic">
-              <img className="womanpic" src="./images/woman-profile.jpeg"/>
+           <div  className="recipes"> 
+              <h1 className="yourTitle">Your Recipes</h1>
+              <UserFoodList items={userfoods}/>
            </div>
-           <h3 className="username2"> Jane Doe</h3>
-           <h4 className="years"> Since 2019 </h4>
+           <div className="profilepic">
+              <img className="womanpic" src='/images/woman-profile.jpeg' alt="WomanProfile"/>;
+           </div>
+           <div className='userInfo'>
+              <h3 className="username2"> Jane Doe</h3>
+              <h4 className="years"> Since 2019 </h4>
+           </div>
       </div>
     );
   }
