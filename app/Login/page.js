@@ -42,13 +42,8 @@ const LoginPage = () => {
                     <input type="text" className='text-password'/>
                     <br></br>
                     <button type="submit" className='submit'>Log In</button>
+                    <button type="submit" className='submit'>Sign Up</button>
                 </form>
-
-                <div className='signupLink'>
-                    <p>Don't have an account? <Link href="/">Signup</Link> </p>
-                    
-                </div>
-                
             </div>
         </div>
     )
