@@ -41,3 +41,11 @@ button {
     margin: 16px;
 }
 
+.signupLink{
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 30px;
+}
+
+.signupLink a:hover{
+    color: #553c2c;
+}
