@@ -30,10 +30,11 @@ const LoginPage = () => {
                 <div className='LoginHeader'>
                     <h1 className='login'>Login</h1>
                 </div>
-                
+                <br></br>
                     <form onSubmit={submitHandler} className='form'>
                         <label className='username'>Username: </label>
                         <input type="text" className='text-username'/>
+                        <br></br>
                         <br></br>
                         <label className='password'>Password: </label>
                         <input type="text" className='text-password'/>
