@@ -15,6 +15,7 @@ const LoginPage = () => {
         event.preventDefault();
         // For now the user can login without credentials
         setIsLoggedIn(true);
+        localStorage.setItem('isLoggedIn', 'true');
         router.push('/Profile') //change once we make the 'logged in user screen'
     }
 
@@ -31,16 +32,23 @@ const LoginPage = () => {
                     <h1 className='login'>Login</h1>
                 </div>
                 <br></br>
-                    <form onSubmit={submitHandler} className='form'>
-                        <label className='username'>Username: </label>
-                        <input type="text" className='text-username'/>
-                        <br></br>
-                        <br></br>
-                        <label className='password'>Password: </label>
-                        <input type="text" className='text-password'/>
-                        <br></br>
-                        <button type="submit" className='submit'>Log In</button>
-                    </form>
+                
+                <form onSubmit={submitHandler} className='form'>
+                    <label className='username'>Username: </label>
+                    <input type="text" className='text-username'/>
+                    <br></br>
+                    <br></br>
+                    <label className='password'>Password: </label>
+                    <input type="text" className='text-password'/>
+                    <br></br>
+                    <button type="submit" className='submit'>Log In</button>
+                </form>
+
+                <div className='signupLink'>
+                    <p>Don't have an account? <Link href="/">Signup</Link> </p>
+                    
+                </div>
+                
             </div>
         </div>
     )
