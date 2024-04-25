@@ -39,7 +39,7 @@ const LoginPage = () => {
                     <br></br>
                     <br></br>
                     <label className='password'>Password: </label>
-                    <input type="text" className='text-password'/>
+                    <input type="password" className='text-password'/>
                     <br></br>
                     <button type="submit" className='submit'>Log In</button>
                     <button type="submit" className='submit'>Sign Up</button>
