@@ -4,6 +4,7 @@ import React, {useState} from 'react'
 import {useRouter} from 'next/navigation'
 import Hdr from '../components/Hdr'
 import './page.css'
+const axios = require('axios');
 
 const LoginPage = () => {
 
@@ -14,25 +15,33 @@ const LoginPage = () => {
     const [login, setLogin] = useState(true);
 
 
-    const submitHandler = async (event) => {
+    const submitHandler = (event) => {
         event.preventDefault();
+        /*
         try {
             if(login) {
-                const res = await axios.post('/routes/api/users', {username, password});
+                const res = axios.post('/routes/api/users', {username, password});
                 console.log(res.data);
                 setIsLoggedIn(true);
                 localStorage.setItem('isLoggedIn', 'true');
                 router.push('/Profile') //change once we make the 'logged in user screen'
             }
             else {
-                const res = await axios.post('/routes/api/users', {username, password});
+                const res = axios.post('/routes/api/users', {username, password});
                 console.log(res.data);
                 router.push('/Login');
             }
         
         } catch(err) {
-            console.err("Error in signing in");
+            console.log("Error in signing in: " + err);
         }
+        */
+       axios.post('Login/', {
+            username: username,
+            password: password,
+       })
+       .then((response) => {console.log(response)},
+       (error) => {console.log(error)})
     }
 
     const handleLogout = () => {
@@ -72,7 +81,7 @@ const LoginPage = () => {
                         onChange={(event) => setPassword(event.target.value)}/>
                     <br></br>
                     <button type="submit" className='submit'>{login ? 'Log In':'Sign Up'}</button>
-                    <button type="submit" className='submit' onClick={hangleToggle}>{login ? 'Switch to Sign Up' : 'Switch to Log In'}</button>
+                    <button type="button" className='submit' onClick={hangleToggle}>{login ? 'Switch to Sign Up' : 'Switch to Log In'}</button>
                 </form>
                 
                 
