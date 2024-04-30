@@ -77,6 +77,7 @@ const CreatePage = () => {
       const submitHandler = (event) => {
         event.preventDefault();
           const recipe = {
+            creator: localStorage.getItem('username'),
             title: recipeInput.enteredTitle,
             description: recipeInput.enteredDescription,
             link: recipeInput.enteredLink,
@@ -86,8 +87,13 @@ const CreatePage = () => {
             media: recipeInput.enteredMedia,
             directions: recipeInput.enteredDirections
         };
-          
-        console.log(recipe);
+
+        axios.post('http://localhost:8082/api/recipes', recipe)
+        .then((response) => {
+          console.log(response)
+          router.push('/Profile')
+        })
+        //console.log(recipe);
 
         setRecipeInput({
             enteredTitle: '',
