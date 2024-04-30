@@ -11,8 +11,8 @@ const UserFoodList = (props) => { // Accept users array as a prop
                     key={userfood.id}
                     id={userfood.id}
                     img={userfood.img}
-                    name={userfood.name}
-                    text={userfood.text}
+                    name={userfood.title}
+                    text={userfood.description}
                     
                 />
             )}
