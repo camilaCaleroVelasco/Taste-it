@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 var bodyParser = require("body-parser");
+const bcrypt = require('bcrypt');
+
 
 
 const UserLogin = require('../../models/userLogin');
@@ -10,12 +12,6 @@ const UserSignup = require('../../models/userSignup');
 module.exports = router;
 
 
-router.post('/', bodyParser.json(), (req, res) => {
-    UserSignup.create(req.body)
-        .then((UserSignup) => res.json({msg: 'user added successfully '}))
-        .catch((err) => res.status(400).json({error: 'Error adding user', details: err.message }));
-});
-
 // @route Get api/items
 router.get('/', (req, res) => {
     UserSignup.find()
@@ -23,52 +19,57 @@ router.get('/', (req, res) => {
     .catch((err) => res.status(404).json({ noitemsfound: 'No Users Found'}));
 });
 
-/*
-router.post('/', bodyParser.json(), async(req, res) => {
+
+router.post('/signup', bodyParser.json(), async(req, res) => {
     try {
-        const{username, email, password} = req.body;
+        const{username, password} = req.body;
 
         // does the username alreayd exists?
-        const exists = await UserSignup.findOne({ $or: [{ username }, { email }] });
+        const exists = await UserSignup.findOne({ username });
         if (exists) {
-            return res.status(400).json({error: 'Username or email already exists'});
+            return res.status(400).json({ error: 'Username already exists' });
         }
+
+        // Encrypt password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         // else create a username
-        await UserSignup.create({username, email, password});
-        res.json({ msg: 'User added successfully'});
+        await UserSignup.create({username, password: hashedPassword});
+
+        res.json({ msg: 'User added successfully', isLoggedIn: true});
     } catch (err) {
-        console.err("Error during signup: ", err);
+        console.error("Error during signup: ", err);
         res.status(500).json({ error: 'Internal server error' });
 
     }
 });
 
-router.post('/', bodyParser.json(), async(req, res) => {
+router.post('/login', bodyParser.json(), async(req, res) => {
     try {
         const{username, password} = req.body;
 
         // does the username alreayd exists?
-        const exists = await UserLogin.findOne({ username });
+        const exists = await UserSignup.findOne({ username });
         if (!exists) {
             return res.status(400).json({error: 'Username does not exists'});
         }
 
         // is password correct? 
-        const isValid = password === exists.password; 
+        const isValid = await bcrypt.compare(password, exists.password);
         if (!isValid){
             return res.status(400).json({error: 'Invalid password'});
         } 
 
         // everything correct?
-        res.json({msg: 'Login Successful', exists});
+        res.json({msg: 'Login Successful',isLoggedIn: true, exists});
     } catch (err) {
-        console.err("Error during login: ", err);
+        console.error("Error during login: ", err);
         res.status(500).json({ error: 'Internal server error' });
 
     }
 
 });
-*/
+
 
 
 

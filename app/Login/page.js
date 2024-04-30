@@ -6,6 +6,8 @@ import Hdr from '../components/Hdr'
 import './page.css'
 const axios = require('axios');
 
+
+
 const LoginPage = () => {
 
     const router = useRouter();
@@ -15,38 +17,50 @@ const LoginPage = () => {
     const [login, setLogin] = useState(true);
 
 
-    const submitHandler = (event) => {
+    const submitHandler = async (event) => {
         event.preventDefault();
-        /*
+        
         try {
+            let response;
             if(login) {
-                const res = axios.post('/routes/api/users', {username, password});
-                console.log(res.data);
-                setIsLoggedIn(true);
-                localStorage.setItem('isLoggedIn', 'true');
-                router.push('/Profile') //change once we make the 'logged in user screen'
+                // If login, send a login request
+                const loginResponse = await axios.post('http://localhost:8082/api/users/login', {
+                username: username,
+                password: password,
+                });
+                console.log(loginResponse.data);
+                if (loginResponse.data.isLoggedIn) {
+                    setIsLoggedIn(true);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    router.push('/Profile');
+                }
             }
             else {
-                const res = axios.post('/routes/api/users', {username, password});
-                console.log(res.data);
-                router.push('/Login');
+                // If signup, send a signup request
+                const signupResponse = await axios.post('http://localhost:8082/api/users/signup', {
+                username: username,
+                password: password,
+                });
+                
+                console.log(signupResponse.data);
+                if (signupResponse.data.isLoggedIn) {
+                    setIsLoggedIn(true);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    router.push('/Login');
+                }
             }
-        
+            
         } catch(err) {
             console.log("Error in signing in: " + err);
+            if (err.response && err.response.status === 400) {
+                // If the server responds with status code 400
+                alert('Error: Username or password does not exist.');
+            } else {
+                // For other errors, show a generic error message
+                alert('Error: An error occurred. Please try again later.');
+            }
         }
-        */
-       axios.post('http://localhost:8082/api/users', {
-            username: username,
-            password: password,
-       }).then((response) => {
-            console.log(response.data);
-            setIsLoggedIn(true);
-            localStorage.setItem('isLoggedIn', 'true');
-            router.push('/Profile');
-        }).catch((error) => {
-            console.log(error)
-        });
+        
     }
 
     const handleLogout = () => {
