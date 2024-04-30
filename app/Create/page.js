@@ -5,6 +5,7 @@ import {useRouter} from 'next/navigation'
 import Hdr from '../components/Hdr';
 import Button from '../components/Button';
 import './page.css';
+import axios from 'axios';
 
 const CreatePage = () => {
 
@@ -87,7 +88,7 @@ const CreatePage = () => {
             media: recipeInput.enteredMedia,
             directions: recipeInput.enteredDirections
         };
-
+          
         axios.post('http://localhost:8082/api/recipes', recipe)
         .then((response) => {
           console.log(response)

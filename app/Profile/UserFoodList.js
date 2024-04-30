@@ -13,6 +13,8 @@ const UserFoodList = (props) => { // Accept users array as a prop
                     img={userfood.img}
                     name={userfood.title}
                     text={userfood.description}
+                    onEdit={props.onEdit}
+                    onRemove={props.onRemove}
                     
                 />
             )}

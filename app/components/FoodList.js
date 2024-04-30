@@ -1,6 +1,8 @@
 import Food from "./Food";
 
 const FoodList = (props) => { // Accept users array as a prop
+
+    
     return (
         
         <div className="foods">

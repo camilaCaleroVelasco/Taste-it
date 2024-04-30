@@ -56,12 +56,27 @@ const ProfilePage = () => {
   const [userfoods, setUserFoods] = useState([]);
   //change to start with the user array (i havent figured out how to make it so i cant add it here)
 
+  const handleEdit = (recipeId) => {
+    // Navigate to the edit page with the recipeId as a parameter
+    router.push(`/edit-recipe/${recipeId}`);
+  };
+
+  const handleRemove = async (recipeId) => {
+    try {
+        await axios.delete(`http://localhost:8082/api/recipes/${recipeId}`);
+        setUserRecipes(userRecipes.filter(recipe => recipe._id !== recipeId));
+    } catch (error) {
+        console.error('Error removing recipe:', error);
+    }
+};
+
     return (
       <div className="profile"> 
            <Hdr isLoggedIn={isLoggedIn} handleLgout={handleLogout}/>
            <div  className="recipes"> 
               <h1 className="yourTitle">Your Recipes</h1>
-              <UserFoodList items={userRecipes}/>
+              <UserFoodList items={userRecipes} onEdit={handleEdit} onRemove={handleRemove} />
+
            </div>
            <div className="profilepic">
               <img className="womanpic" src='/images/woman-profile.jpeg' alt="WomanProfile"/>;

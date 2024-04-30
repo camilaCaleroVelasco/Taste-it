@@ -5,8 +5,8 @@ const Recipe = require('../../models/Recipes');
 module.exports = router;
 
 // get list of all items
-router.get('/', (req, res) => {
-    Recipe.find()
+router.get('/', async (req, res) => {
+    await Recipe.find()
     .then((recipes) => res.json(recipes))
     .catch((err) => res.status(404).json({ norecipesfound: 'No Recipes found' }));
 });
@@ -16,13 +16,7 @@ router.get('/:id', (req, res) => {
     .then((recipe) => res.json(recipe))
     .catch((err) => res.status(404).json({ norecipefound: 'No Recipe found' }));
 });
-// add a new item
-// router.post('/', bodyParser.json(), (req, res) => {
-//     Recipe.create(req.body)
-//     .then((recipe)=> res.json({ msg: 'Recipe added successfully' }))
-//     .catch((err)=> res.status(400).json({ error: 'Error'}));
-//    });
-// Route handler for creating a new recipe
+
 router.post('/', async (req, res) => {
     try {
         // Extract recipe data from the request body
@@ -59,9 +53,18 @@ router.put('/:id', bodyParser.json(), (req, res) => {
     .catch((err) => res.status(400).json({ error: 'Unable to update the Database' }));
 });
 // delete an item
-router.delete('/:id', (req, res) => {
-    Recipe.findByIdAndDelete(req.params.id)
-    .then((recipe)=> res.json({ msg: 'Recipe entry deleted successfully' }))
-    .catch((err)=> res.status(404).json({ error: 'No such a recipe'}));
+router.delete('/:id', async (req, res) => {
+    try {
+        const deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
+        const recipeId = req.params.id;
+        console.log('Recipe ID to delete:', recipeId);
+        if (!deletedRecipe) {
+            return res.status(404).json({ error: 'Recipe not found' });
+        }
+        res.json({ message: 'Recipe deleted successfully', recipe: deletedRecipe });
+    } catch (error) {
+        console.error('Error deleting recipe:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 
