@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const recipes = require('./routes/api/recipes');
+app.use('/api/recipes', recipes);
+
 const app = express();
 app.use(cors({origin: true, credentials: true}));
 app.use(express.json()); // To parse JSON bodies
