@@ -32,6 +32,7 @@ const LoginPage = () => {
                 if (loginResponse.data.isLoggedIn) {
                     setIsLoggedIn(true);
                     localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('username', username);
                     router.push('/Profile');
                 }
             }
