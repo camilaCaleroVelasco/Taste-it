@@ -18,40 +18,10 @@ const ProfilePage = () => {
       router.push('/'); // go to home view
     }
     
-
-    const USER_RECIPES = [
-      {
-        id: '1',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI--fVLjutQhCS9ioPEY9jdcweIw6K-bnBii3JyDJ6lg&s',
-        name: 'Omelet',
-        text: 'Eggs fried in olive oil, folded around delicious fillings.'
-        
-      },
-      {
-        id: '2',
-        img: 'https://i.imgur.com/67Lp5fh.jpg',
-        name: 'Pho',
-        text: 'A popular Vietnamese soup dish with rice noodles.'
-        
-      },
-      {
-        id: '3',
-        img: 'https://tastesbetterfromscratch.com/wp-content/uploads/2023/02/Banana-Bread-6.jpg',
-        name: 'Banana Bread',
-        text: 'Sweet bread made from mashed bananas, sometimes with nuts added. '
-        
-      },
-      {
-        id: '4',
-        img: 'https://www.onceuponachef.com/images/2024/02/chipotle-chicken-quesadillas.jpg',
-        name: 'Quesadillas',
-        text: 'A Mexican dish of tortillas stuffed with fillings then cooked on a griddle or stove.'
-        
-      },
-    ];
   
-    const[userfoods, setFoods] = useState(USER_RECIPES);
-  
+    const[userfoods, setFoods] = useState([]);
+    //change to start with the user array (i havent figured out how to make it so i cant add it here)
+    
     return (
       <div className="profile"> 
            <Hdr isLoggedIn={isLoggedIn} handleLgout={handleLogout}/>
@@ -63,8 +33,7 @@ const ProfilePage = () => {
               <img className="womanpic" src='/images/woman-profile.jpeg' alt="WomanProfile"/>;
            </div>
            <div className='userInfo'>
-              <h3 className="username2"> Jane Doe</h3>
-              <h4 className="years"> Since 2019 </h4>
+              <h3 className="username2"> {localStorage.getItem('username')} </h3>
            </div>
       </div>
     );
