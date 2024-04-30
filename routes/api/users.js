@@ -6,6 +6,23 @@ var bodyParser = require("body-parser");
 const UserLogin = require('../../models/userLogin');
 const UserSignup = require('../../models/userSignup');
 
+//export router
+module.exports = router;
+
+
+router.post('/', bodyParser.json(), (req, res) => {
+    UserSignup.create(req.body)
+        .then((UserSignup) => res.json({msg: 'user added successfully '}))
+        .catch((err) => res.status(400).json({error: 'Error adding user', details: err.message }));
+});
+
+// @route Get api/items
+router.get('/', (req, res) => {
+    UserSignup.find()
+    .then((users) => res.json(users))
+    .catch((err) => res.status(404).json({ noitemsfound: 'No Users Found'}));
+});
+
 /*
 router.post('/', bodyParser.json(), async(req, res) => {
     try {
@@ -54,13 +71,5 @@ router.post('/', bodyParser.json(), async(req, res) => {
 */
 
 
-router.post('/', bodyParser.json(), (req, res) => {
-    UserSignup.create(req.body)
-        .then((UserSignup) => res.json({msg: 'item added successfully'}))
-        .catch((err) => res.status(400).json({error: 'error signing in'}))
-})
 
 
-
-//export router
-module.exports = router;

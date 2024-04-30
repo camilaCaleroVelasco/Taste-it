@@ -36,12 +36,17 @@ const LoginPage = () => {
             console.log("Error in signing in: " + err);
         }
         */
-       axios.post('Login/', {
+       axios.post('http://localhost:8082/api/users', {
             username: username,
             password: password,
-       })
-       .then((response) => {console.log(response)},
-       (error) => {console.log(error)})
+       }).then((response) => {
+            console.log(response.data);
+            setIsLoggedIn(true);
+            localStorage.setItem('isLoggedIn', 'true');
+            router.push('/Profile');
+        }).catch((error) => {
+            console.log(error)
+        });
     }
 
     const handleLogout = () => {
